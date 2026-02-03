@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# Notes App 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это тестовое задание — простое приложение для заметок.  
+Позволяет создавать, редактировать, удалять и искать заметки. Все данные хранятся в **localStorage**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Технологии
 
-## React Compiler
+- **React + TypeScript + Vite**.
+- **MUI** (Material UI) для дизайна.
+- **localStorage** для хранения заметок.
+- **Docker + Nginx** для контейнеризации фронтенда.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Запуск локально
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Клонируем репозиторий:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/yurwow/Notes.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Устанавливаем зависимости:
+```bash
+npm install
 ```
+3. Запускаем dev-сервер:
+```bash
+npm run dev
+```
+4. Открываем браузер: http://localhost:5173
+
+---
+
+## Запуск через Docker локально
+
+1. Собрать Docker-образ из папки проекта:
+```bash 
+docker build -t notes .
+```
+2. Запустить контейнер:
+```bash
+docker run -p 3000:80 notes
+```
+3. Открыть в браузере: http://localhost:3000
