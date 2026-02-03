@@ -22,8 +22,9 @@
 git clone https://github.com/yurwow/Notes.git
 ```
 
-2. Устанавливаем зависимости:
+2. Переходим в папку проекта и устанавливаем зависимости:
 ```bash
+cd Notes
 npm install
 ```
 3. Запускаем dev-сервер:
@@ -38,6 +39,7 @@ npm run dev
 
 1. Собрать Docker-образ из папки проекта:
 ```bash 
+cd Notes
 docker build -t notes .
 ```
 2. Запустить контейнер:
@@ -45,3 +47,5 @@ docker build -t notes .
 docker run -p 3000:80 notes
 ```
 3. Открыть в браузере: http://localhost:3000
+
+![img.png](img.png)
